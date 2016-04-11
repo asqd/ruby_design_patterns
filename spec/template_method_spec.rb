@@ -12,6 +12,10 @@ describe 'Template Method Pattern' do
     it "can attack" do
       expect(hero.attack).to eq("Attack dealing 10 damage")
     end
+
+    it "requires subclasses to implement greeting_line" do
+      expect { hero.greet }.to raise_exception
+    end
   end
 
   context "Warrior" do
@@ -24,6 +28,10 @@ describe 'Template Method Pattern' do
     it "has strike ability" do
       expect(hero.abilities).to include(:strike)
     end
+
+    it "greets other characters" do
+      expect(hero.greet).to eq("Warrior is ready to fight")
+    end
   end
 
   context "Mage" do
@@ -35,6 +43,10 @@ describe 'Template Method Pattern' do
 
     it "has strike ability" do
       expect(hero.abilities).to include(:fireball)
+    end
+
+    it "greets other characters" do
+      expect(hero.greet).to eq("Wisdom is power")
     end
   end
 

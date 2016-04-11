@@ -24,7 +24,13 @@ class Hero
     "Attack dealing #{damage} damage"
   end
 
+  def greet
+    "#{greeting_line}"
+  end
 
+  def greeting_line
+    raise "You must define greeting_line"
+  end
 end
 
 class Warrior < Hero
@@ -35,6 +41,10 @@ class Warrior < Hero
   def occupation_abilities
     [:strike]
   end
+
+  def greeting_line
+    "Warrior is ready to fight"
+  end
 end
 
 class Mage < Hero
@@ -44,5 +54,9 @@ class Mage < Hero
 
   def occupation_abilities
     [:fireball]
+  end
+
+  def greeting_line
+    "Wisdom is power"
   end
 end

@@ -22,8 +22,8 @@ end
 
 class HTMLPrinter
   def print(damage, health, skills)
-    "#{header}" + 
-    "#{content(damage, health, skills)}" + 
+    "#{header}" +
+    "#{content(damage, health, skills)}" +
     "#{footer}"
   end
 

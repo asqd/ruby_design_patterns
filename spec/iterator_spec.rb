@@ -16,6 +16,14 @@ describe "Iterator Pattern" do
       inventory.add(item2)
     end
 
+    it "provides most expensive items" do
+      expensive = Item.new
+      expensive.cost = 100
+      inventory.add(expensive)
+
+      expect(inventory.max).to eq(expensive)
+    end
+
     it "can be iterated through items to get total cost" do
       iterator = InventoryIterator.new inventory
       result = inventory.inject(0) { |sum, item| sum + item.cost }

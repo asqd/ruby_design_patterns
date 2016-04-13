@@ -14,6 +14,7 @@ class Inventory
   def each(&block)
     items.each(&block)
   end
+
 end
 
 class Item
@@ -21,6 +22,10 @@ class Item
 
   def initialize
     @cost = 0
+  end
+
+  def <=>(other)
+    cost <=> other.cost
   end
 end
 

@@ -3,6 +3,23 @@ require_relative '../lib/command'
 
 describe "Command Pattern" do
 
+  describe Computer do
+    let(:computer) { Computer.new }
+
+    before :each do
+      computer.add(CalibrateDriverCommand.new)
+      computer.add(TestCompilerCommand.new)
+    end
+
+    it "can add commands to its queue" do
+      expect(computer.queue.size).to eq(2)
+    end
+
+    it "execute all commands its queue" do
+      expect(computer.execute).to eq "\nCalibrated Uranium-Rod Driver\nTested Jupiter Wave Compiler\n"
+    end
+  end
+
   describe "Commands" do
     describe AmplifyShieldCommand do
       it "amplifies shield" do

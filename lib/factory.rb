@@ -1,21 +1,23 @@
 class Party
   attr_reader :members
 
-  def initialize number
+  def initialize number, occupation
     @members = []
-    number.times { members << create }
+    number.times { members << create(occupation) }
   end
 end
 
-class WarriorParty < Party
-  def create
-    Warrior.new
+class PartyFactory < Party
+  def create(occupation)
+    if permitted_occupations.include?(occupation)
+      self.class.const_get(occupation.to_s.capitalize).new
+    else
+      raise "Unknown occupation"
+    end
   end
-end
 
-class MageParty < Party
-  def create
-    Mage.new
+  def permitted_occupations
+    [:warrior, :mage]
   end
 end
 
